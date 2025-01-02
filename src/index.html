@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
+
     <title>Les petit plats</title>
 </head>
 
@@ -26,275 +27,83 @@
         </div>
     </header>
 
-    <div class="m-6 bg-red-500 flex  justify-between ">
+    <div class="mx-36 my-6 flex  justify-between">
 
 
 
-        <div>
+        <div class="flex gap-4">
 
-            <input type="text" multiple list="tests" name="test" id="test" placeholder="ingrédient"
-                class="placeholder:text-black-500" />
+            <div class="dropdown z-10  relative w-52 mx-auto">
+                <div class="dropdown-toggle flex justify-between items-center p-4 bg-white cursor-pointer rounded">
+                    <h3 class="text-lg font-semibold">Ingrédients</h3>
+                    <img class="dropdown-icon w-3 h-3" src="./assets/dropdown-close.png" alt="Toggle Dropdown" />
+                </div>
+                <div
+                    class="dropdown-content absolute hidden mt-2 bg-white shadow-md rounded p-4 max-h-60 overflow-y-auto">
+                    <div class="flex justify-between items-center p-4 border-solid border-2">
+                        <input type="text" class="dropdown-search-input">
+                        <img src="./assets/search2.svg" alt="search2" class="w-4 h-4 mx-2" />
+                    </div>
+                    <p>Contenu du dropdown. Ajoutez des éléments ici.</p>
+                </div>
+            </div>
 
-            <datalist id="tests">
-                <option value="toto">toto</option>
-                <option value="tata">tata</option>
-                <option value="titi">titi</option>
-            </datalist>
+            <div class="dropdown z-10 relative w-52 mx-auto">
+                <div class="dropdown-toggle flex justify-between items-center p-4 bg-white cursor-pointer rounded">
+                    <h3 class="text-lg font-semibold">Appareils</h3>
+                    <img class="dropdown-icon w-3 h-3" src="./assets/dropdown-close.png" alt="Toggle Dropdown" />
+                </div>
+                <div
+                    class="dropdown-content absolute hidden mt-2 bg-white shadow-md rounded p-4 max-h-60 overflow-y-auto">
+                    <div class="flex justify-between items-center p-4 border-solid border-2">
+                        <input type="text" class="dropdown-search-input">
+                        <img src="./assets/search2.svg" alt="search2" class="w-4 h-4 mx-2" />
+                    </div>
+                    <p>Contenu du dropdown. Ajoutez des éléments ici.</p>
+                </div>
+            </div>
+
+            <div class="dropdown z-10 relative w-52 mx-auto">
+                <div class="dropdown-toggle flex justify-between items-center p-4 bg-white cursor-pointer rounded">
+                    <h3 class="text-lg font-semibold">Ustensiles</h3>
+                    <img class="dropdown-icon w-3 h-3" src="./assets/dropdown-close.png" alt="Toggle Dropdown" />
+                </div>
+                <div
+                    class="dropdown-content absolute hidden mt-2 bg-white shadow-md rounded p-4 max-h-60 overflow-y-auto">
+                    <div class="flex justify-between items-center p-4 border-solid border-2">
+                        <input type="text" class="dropdown-search-input">
+                        <img src="./assets/search2.svg" alt="search2" class="w-4 h-4 mx-2" />
+                    </div>
+                    <p>Contenu du dropdown. Ajoutez des éléments ici.</p>
+                </div>
+            </div>
 
 
 
-
-            <input type="text" multiple list="tests" name="test" id="test" placeholder="appareils" />
-
-            <datalist id="tests">
-                <option value="toto">toto</option>
-                <option value="tata">tata</option>
-                <option value="titi">titi</option>
-            </datalist>
-
-            <input type="text" multiple list="tests" name="test" id="test" placeholder="ustensiles" />
-
-            <datalist id="tests">
-                <option value="toto">toto</option>
-                <option value="tata">tata</option>
-                <option value="titi">titi</option>
-            </datalist>
         </div>
 
-        <div>
-            <p>Nombre de recette</p>
+        <div class="flex items-center">
+            <p id="recipe-count" class="font-bold text-xl">1500 recettes</p>
         </div>
 
 
     </div>
 
-    <div class=" p-4 bg-red-500 min-h-32">
+    <div class="mx-36 bg-red-500 min-h-32">
 
         <h2>Tag</h2>
 
+        <div>
+            <p>Crème de coco</p> im
+        </div>
     </div>
 
     <div class="my-12 mx-32 min-h-32">
 
 
-        <div class="p-4 grid grid-cols-3 gap-4 justify-items-center w-full">
+        <div id="recipes-container" class="p-4 grid grid-cols-3 gap-4 justify-items-center w-full">
 
-            <article class=" shadow-lg rounded-lg bg-white relative">
-                <p class="py-2 px-4  rounded-full right-5 top-5 absolute bg-[#FFD15B]">50min</p>
-                <img class="h-96 w-full object-cover rounded-t-lg " src="assets/recipes/Recette01.jpg" alt="">
 
-                <div class="flex flex-col p-4 ">
-
-                    <h3 class="font-bold">Limonade de coco</h3>
-
-                    <p class="my-2 uppercase text-gray-500">Recette</p>
-
-                    <p class="my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit eaque consequuntur
-                        magnam ullam.
-                        Rem eaque pariatur doloribus necessitatibus voluptas aspernatur!</p>
-
-                    <p class="my-2 uppercase text-gray-500">Ingrédients</p>
-
-                    <div class=" my-2 grid grid-cols-2">
-
-                        <p class="mb-2">Lait de coco <br>
-                            <span class="text-gray-500">400ml</span></p>
-                        <p class="mb-2">Jus de citron <br>
-                            <span class="text-gray-500">2</span>
-                        </p>
-                        <p class="mb-2">Crème de coco <br> <span class="text-gray-500">4cuillère</span></p>
-                        <p class="mb-2">Sucre <br> <span class="text-gray-500">20g</span></p>
-                        <p class="mb-2">Glaçons <br><span class="text-gray-500">2</span></p>
-
-                    </div>
-
-
-
-
-                </div>
-
-            </article>
-
-            <article class=" shadow-lg rounded-lg bg-white relative">
-                <p class="py-2 px-4  rounded-full right-5 top-5 absolute bg-[#FFD15B]">50min</p>
-                <img class="h-96 w-full object-cover rounded-t-lg " src="assets/recipes/Recette02.jpg" alt="">
-
-                <div class="flex flex-col p-4 ">
-
-                    <h3 class="font-bold">Limonade de coco</h3>
-
-                    <p class="my-2 uppercase text-gray-500">Recette</p>
-
-                    <p class="my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit eaque consequuntur
-                        magnam ullam.
-                        Rem eaque pariatur doloribus necessitatibus voluptas aspernatur!</p>
-
-                    <p class="my-2 uppercase text-gray-500">Ingrédients</p>
-
-                    <div class=" my-2 grid grid-cols-2">
-
-                        <p class="mb-2">Lait de coco <br>
-                            <span class="text-gray-500">400ml</span></p>
-                        <p class="mb-2">Jus de citron <br>
-                            <span class="text-gray-500">2</span>
-                        </p>
-                        <p class="mb-2">Crème de coco <br> <span class="text-gray-500">4cuillère</span></p>
-                        <p class="mb-2">Sucre <br> <span class="text-gray-500">20g</span></p>
-                        <p class="mb-2">Glaçons <br><span class="text-gray-500">2</span></p>
-
-                    </div>
-
-
-
-
-                </div>
-
-            </article>
-
-            <article class="shadow-lg rounded-lg bg-white relative">
-                <p class="py-2 px-4  rounded-full right-5 top-5 absolute bg-[#FFD15B]">50min</p>
-                <img class="h-96 w-full object-cover rounded-t-lg " src="assets/recipes/Recette03.jpg" alt="">
-
-                <div class="flex flex-col p-4 ">
-
-                    <h3 class="font-bold">Limonade de coco</h3>
-
-                    <p class="my-2 uppercase text-gray-500">Recette</p>
-
-                    <p class="my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit eaque consequuntur
-                        magnam ullam.
-                        Rem eaque pariatur doloribus necessitatibus voluptas aspernatur!</p>
-
-                    <p class="my-2 uppercase text-gray-500">Ingrédients</p>
-
-                    <div class=" my-2 grid grid-cols-2">
-
-                        <p class="mb-2">Lait de coco <br>
-                            <span class="text-gray-500">400ml</span></p>
-                        <p class="mb-2">Jus de citron <br>
-                            <span class="text-gray-500">2</span>
-                        </p>
-                        <p class="mb-2">Crème de coco <br> <span class="text-gray-500">4cuillère</span></p>
-                        <p class="mb-2">Sucre <br> <span class="text-gray-500">20g</span></p>
-                        <p class="mb-2">Glaçons <br><span class="text-gray-500">2</span></p>
-
-                    </div>
-
-
-
-
-                </div>
-
-            </article>
-
-            <article class="shadow-lg rounded-lg bg-white relative">
-                <p class="py-2 px-4  rounded-full right-5 top-5 absolute bg-[#FFD15B]">50min</p>
-                <img class="h-96 w-full object-cover rounded-t-lg " src="assets/recipes/Recette04.jpg" alt="">
-
-                <div class="flex flex-col p-4 ">
-
-                    <h3 class="font-bold">Limonade de coco</h3>
-
-                    <p class="my-2 uppercase text-gray-500">Recette</p>
-
-                    <p class="my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit eaque consequuntur
-                        magnam ullam.
-                        Rem eaque pariatur doloribus necessitatibus voluptas aspernatur!</p>
-
-                    <p class="my-2 uppercase text-gray-500">Ingrédients</p>
-
-                    <div class=" my-2 grid grid-cols-2">
-
-                        <p class="mb-2">Lait de coco <br>
-                            <span class="text-gray-500">400ml</span></p>
-                        <p class="mb-2">Jus de citron <br>
-                            <span class="text-gray-500">2</span>
-                        </p>
-                        <p class="mb-2">Crème de coco <br> <span class="text-gray-500">4cuillère</span></p>
-                        <p class="mb-2">Sucre <br> <span class="text-gray-500">20g</span></p>
-                        <p class="mb-2">Glaçons <br><span class="text-gray-500">2</span></p>
-
-                    </div>
-
-
-
-
-                </div>
-
-            </article>
-
-
-            <article class="shadow-lg rounded-lg bg-white relative">
-                <p class="py-2 px-4  rounded-full right-5 top-5 absolute bg-[#FFD15B]">50min</p>
-                <img class="h-96 w-full object-cover rounded-t-lg " src="assets/recipes/Recette05.jpg" alt="">
-
-                <div class="flex flex-col p-4 ">
-
-                    <h3 class="font-bold">Limonade de coco</h3>
-
-                    <p class="my-2 uppercase text-gray-500">Recette</p>
-
-                    <p class="my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit eaque consequuntur
-                        magnam ullam.
-                        Rem eaque pariatur doloribus necessitatibus voluptas aspernatur!</p>
-
-                    <p class="my-2 uppercase text-gray-500">Ingrédients</p>
-
-                    <div class=" my-2 grid grid-cols-2">
-
-                        <p class="mb-2">Lait de coco <br>
-                            <span class="text-gray-500">400ml</span></p>
-                        <p class="mb-2">Jus de citron <br>
-                            <span class="text-gray-500">2</span>
-                        </p>
-                        <p class="mb-2">Crème de coco <br> <span class="text-gray-500">4cuillère</span></p>
-                        <p class="mb-2">Sucre <br> <span class="text-gray-500">20g</span></p>
-                        <p class="mb-2">Glaçons <br><span class="text-gray-500">2</span></p>
-
-                    </div>
-
-
-
-
-                </div>
-
-            </article>
-
-            <article class="shadow-lg rounded-lg bg-white relative">
-                <p class="py-2 px-4  rounded-full right-5 top-5 absolute bg-[#FFD15B]">50min</p>
-                <img class="h-96 w-full object-cover rounded-t-lg " src="assets/recipes/Recette06.jpg" alt="">
-
-                <div class="flex flex-col p-4 ">
-
-                    <h3 class="font-bold">Limonade de coco</h3>
-
-                    <p class="my-2 uppercase text-gray-500">Recette</p>
-
-                    <p class="my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit eaque consequuntur
-                        magnam ullam.
-                        Rem eaque pariatur doloribus necessitatibus voluptas aspernatur!</p>
-
-                    <p class="my-2 uppercase text-gray-500">Ingrédients</p>
-
-                    <div class=" my-2 grid grid-cols-2">
-
-                        <p class="mb-2">Lait de coco <br>
-                            <span class="text-gray-500">400ml</span></p>
-                        <p class="mb-2">Jus de citron <br>
-                            <span class="text-gray-500">2</span>
-                        </p>
-                        <p class="mb-2">Crème de coco <br> <span class="text-gray-500">4cuillère</span></p>
-                        <p class="mb-2">Sucre <br> <span class="text-gray-500">20g</span></p>
-                        <p class="mb-2">Glaçons <br><span class="text-gray-500">2</span></p>
-
-                    </div>
-
-
-
-
-                </div>
-
-            </article>
 
 
 
@@ -306,7 +115,7 @@
 
 
     </div>
-
+    <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
