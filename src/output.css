@@ -919,6 +919,14 @@ video {
   text-transform: uppercase;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
+.normal-case {
+  text-transform: none;
+}
+
 .text-\[\#FFD15B\] {
   --tw-text-opacity: 1;
   color: rgb(255 209 91 / var(--tw-text-opacity, 1));
