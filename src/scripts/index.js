@@ -193,6 +193,7 @@ const searchRecipes = (query) => {
 
     // Réafficher toutes les recettes si ce n'est pas déjà fait
     displayRecipes(recipes);
+    populateDropdowns(recipes); // Mettre à jour les dropdowns avec toutes les recettes
     currentDisplayedRecipes = recipes; // Mettre à jour l'état des recettes affichées
     return;
   }
@@ -228,6 +229,7 @@ const searchRecipes = (query) => {
 
   // Afficher les recettes filtrées
   displayRecipes(filteredRecipes);
+  populateDropdowns(filteredRecipes); // Mettre à jour les dropdowns avec les recettes filtrées
   currentDisplayedRecipes = filteredRecipes; // Mettre à jour l'état des recettes affichées
 };
 
