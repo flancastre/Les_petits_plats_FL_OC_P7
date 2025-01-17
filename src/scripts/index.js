@@ -1,3 +1,5 @@
+// ALGO 1
+
 // ------------AFFICHER DROPDOWN
 document.addEventListener("DOMContentLoaded", function () {
   const dropdowns = document.querySelectorAll(".dropdown");
@@ -116,6 +118,11 @@ const recipesContainer = document.querySelector("#recipes-container"); // Assure
 const displayRecipes = (recipes) => {
   recipesContainer.innerHTML = ""; // Vider le conteneur avant d'ajouter les nouvelles recettes
 
+  if (recipes.length === 0) {
+    recipesContainer.innerHTML = "<p>Aucune recette trouvée.</p>";
+    return;
+  }
+
   const limit = 6; // Limite à 10 recettes
   const recipesToDisplay = recipes.slice(0, limit); // Extraire les 10 premières recettes
 
@@ -170,4 +177,64 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (error) {
     console.error("Erreur lors du chargement des recettes :", error);
   }
+});
+
+// ALGO 1
+
+const searchInput = document.querySelector("#search-input"); // Barre de recherche principale
+let currentDisplayedRecipes = recipes; // Contient les recettes actuellement affichées
+// Fonction de recherche
+const searchRecipes = (query) => {
+  // Si moins de 3 caractères et que toutes les recettes sont déjà affichées, ne rien faire
+  if (query.length < 3) {
+    if (currentDisplayedRecipes === recipes) {
+      return;
+    }
+
+    // Réafficher toutes les recettes si ce n'est pas déjà fait
+    displayRecipes(recipes);
+    currentDisplayedRecipes = recipes; // Mettre à jour l'état des recettes affichées
+    return;
+  }
+
+  // Convertir la recherche en minuscule pour éviter les problèmes de casse
+  const lowerCaseQuery = query.toLowerCase();
+
+  // Découper la chaîne de recherche en mots
+  const words = lowerCaseQuery.split(" "); // Découper la recherche en mots
+
+  // Filtrer les recettes
+  const filteredRecipes = recipes.filter((recipe) => {
+    // Vérifier le titre : chaque mot doit être présent
+    const matchesTitle = words.every((word) =>
+      recipe.name.toLowerCase().includes(word)
+    );
+
+    // Vérifier les ingrédients : chaque mot doit être présent dans un ingrédient
+    const matchesIngredients = recipe.ingredients.some((ingredientObj) =>
+      words.every((word) =>
+        ingredientObj.ingredient.toLowerCase().includes(word)
+      )
+    );
+
+    // Vérifier la description : chaque mot doit être présent
+    const matchesDescription = words.every((word) =>
+      recipe.description.toLowerCase().includes(word)
+    );
+
+    // Retourner vrai si l'un des champs correspond
+    return matchesTitle || matchesIngredients || matchesDescription;
+  });
+
+  // Afficher les recettes filtrées
+  displayRecipes(filteredRecipes);
+  currentDisplayedRecipes = filteredRecipes; // Mettre à jour l'état des recettes affichées
+};
+
+// Écouteur d'événement sur la barre de recherche
+searchInput.addEventListener("input", (event) => {
+  const query = event.target.value.trim(); // Texte saisi, sans espaces inutiles
+
+  // Toujours appeler la fonction de recherche, elle gère à la fois les cas de recherche et de suppression
+  searchRecipes(query);
 });
