@@ -1,4 +1,4 @@
-// ALGO 1
+// ALGO 2
 
 // ------------AFFICHER DROPDOWN
 document.addEventListener("DOMContentLoaded", function () {
@@ -179,56 +179,86 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// ALGO 1
+// ALGO 2
 
 const searchInput = document.querySelector("#search-input"); // Barre de recherche principale
 let currentDisplayedRecipes = recipes; // Contient les recettes actuellement affichées
-// Fonction de recherche
-const searchRecipes = (query) => {
-  // Si moins de 3 caractères et que toutes les recettes sont déjà affichées, ne rien faire
+// Fonction de recherche avec boucle `while`
+const searchRecipesWithWhile = (query) => {
   if (query.length < 3) {
     if (currentDisplayedRecipes === recipes) {
       return;
     }
-
-    // Réafficher toutes les recettes si ce n'est pas déjà fait
     displayRecipes(recipes);
-    currentDisplayedRecipes = recipes; // Mettre à jour l'état des recettes affichées
+    currentDisplayedRecipes = recipes;
     return;
   }
 
-  // Convertir la recherche en minuscule pour éviter les problèmes de casse
   const lowerCaseQuery = query.toLowerCase();
+  const words = lowerCaseQuery.split(" ");
 
-  // Découper la chaîne de recherche en mots
-  const words = lowerCaseQuery.split(" "); // Découper la recherche en mots
+  const filteredRecipes = [];
+  let i = 0;
 
-  // Filtrer les recettes
-  const filteredRecipes = recipes.filter((recipe) => {
-    // Vérifier le titre : chaque mot doit être présent
-    const matchesTitle = words.every((word) =>
-      recipe.name.toLowerCase().includes(word)
-    );
+  // Boucle `while` sur toutes les recettes
+  while (i < recipes.length) {
+    const recipe = recipes[i];
 
-    // Vérifier les ingrédients : chaque mot doit être présent dans un ingrédient
-    const matchesIngredients = recipe.ingredients.some((ingredientObj) =>
-      words.every((word) =>
-        ingredientObj.ingredient.toLowerCase().includes(word)
-      )
-    );
+    let matchesTitle = true;
+    let j = 0;
+    while (j < words.length) {
+      if (!recipe.name.toLowerCase().includes(words[j])) {
+        matchesTitle = false;
+        break; // Si un mot ne correspond pas, on passe à la recette suivante
+      }
+      j++;
+    }
 
-    // Vérifier la description : chaque mot doit être présent
-    const matchesDescription = words.every((word) =>
-      recipe.description.toLowerCase().includes(word)
-    );
+    let matchesIngredients = false;
+    if (!matchesTitle) {
+      let j = 0;
+      while (j < recipe.ingredients.length) {
+        let ingredientMatches = true;
+        let k = 0;
+        while (k < words.length) {
+          if (
+            !recipe.ingredients[j].ingredient.toLowerCase().includes(words[k])
+          ) {
+            ingredientMatches = false;
+            break;
+          }
+          k++;
+        }
+        if (ingredientMatches) {
+          matchesIngredients = true;
+          break; // Si un ingrédient correspond, on arrête de chercher
+        }
+        j++;
+      }
+    }
 
-    // Retourner vrai si l'un des champs correspond
-    return matchesTitle || matchesIngredients || matchesDescription;
-  });
+    let matchesDescription = true;
+    if (!matchesTitle && !matchesIngredients) {
+      let j = 0;
+      while (j < words.length) {
+        if (!recipe.description.toLowerCase().includes(words[j])) {
+          matchesDescription = false;
+          break;
+        }
+        j++;
+      }
+    }
 
-  // Afficher les recettes filtrées
+    // Ajouter la recette à la liste filtrée si elle correspond à l'un des critères
+    if (matchesTitle || matchesIngredients || matchesDescription) {
+      filteredRecipes.push(recipe);
+    }
+
+    i++;
+  }
+
   displayRecipes(filteredRecipes);
-  currentDisplayedRecipes = filteredRecipes; // Mettre à jour l'état des recettes affichées
+  currentDisplayedRecipes = filteredRecipes;
 };
 
 // Écouteur d'événement sur la barre de recherche
@@ -236,5 +266,5 @@ searchInput.addEventListener("input", (event) => {
   const query = event.target.value.trim(); // Texte saisi, sans espaces inutiles
 
   // Toujours appeler la fonction de recherche, elle gère à la fois les cas de recherche et de suppression
-  searchRecipes(query);
+  searchRecipesWithWhile(query);
 });
