@@ -83,7 +83,7 @@ const populateDropdowns = (data) => {
     .querySelector(".dropdown-content")
     .querySelector("p");
   ingredientsDropdown.innerHTML = ingredients
-    .map((ingredient) => `<p>${ingredient}</p>`)
+    .map((ingredient) => `<p class="my-2">${ingredient}</p>`)
     .join("");
 
   // Appareils
@@ -92,7 +92,7 @@ const populateDropdowns = (data) => {
     .querySelectorAll(".dropdown-content")[1]
     .querySelector("p");
   appliancesDropdown.innerHTML = appliances
-    .map((appliance) => `<p>${appliance}</p>`)
+    .map((appliance) => `<p class="my-2">${appliance}</p>`)
     .join("");
 
   // Ustensiles
@@ -101,7 +101,7 @@ const populateDropdowns = (data) => {
     .querySelectorAll(".dropdown-content")[2]
     .querySelector("p");
   ustensilsDropdown.innerHTML = ustensils
-    .map((ustensil) => `<p>${ustensil}</p>`)
+    .map((ustensil) => `<p class="my-2 capitalize">${ustensil}</p>`)
     .join("");
 };
 
