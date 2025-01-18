@@ -1,14 +1,20 @@
 // recipes.js
 const recipesContainer = document.querySelector("#recipes-container"); // Assurez-vous que le conteneur existe dans le HTML
+const recipeCountElement = document.getElementById("recipe-count");
 
 // Fonction pour afficher les recettes
-export const displayRecipes = (recipes) => {
+export const displayRecipes = (recipes, query) => {
   recipesContainer.innerHTML = ""; // Vider le conteneur avant d'ajouter les nouvelles recettes
 
   if (recipes.length === 0) {
-    recipesContainer.innerHTML = "<p>Aucune recette trouvée.</p>";
+    recipesContainer.innerHTML = `<p>Aucune recette ne contient  "${query}" vous pouvez chercher «tarte aux pommes », « poisson », etc...</p>`;
+    recipeCountElement.innerHTML = `0 recettes`;
+    console.log(query);
+
     return;
   }
+
+  recipeCountElement.innerHTML = `${recipes.length} recettes`;
 
   const limit = 6; // Limite à 6 recettes
   const recipesToDisplay = recipes.slice(0, limit);

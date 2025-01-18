@@ -2,7 +2,11 @@
 import { recipes } from "../data/recipes.js"; // Assurez-vous que le chemin est correct
 import { displayRecipes } from "./recipes.js";
 import { populateDropdowns } from "./dropdownPopulate.js";
-import { searchRecipes, currentDisplayedRecipes } from "./search.js";
+import {
+  searchRecipes,
+  currentDisplayedRecipes,
+  searchIngredients,
+} from "./search.js";
 import { initializeDropdowns } from "./dropdowns.js";
 
 // Charger et afficher les recettes
@@ -25,4 +29,11 @@ const searchInput = document.querySelector("#search-input");
 searchInput.addEventListener("input", (event) => {
   const query = event.target.value.trim();
   searchRecipes(query, recipes);
+});
+
+//Barre de recherche ingrédients
+const searchInputIngrédients = document.querySelector("#ingredients-search");
+searchInputIngrédients.addEventListener("input", (event) => {
+  const query = event.target.value.trim();
+  searchIngredients(query, recipes);
 });

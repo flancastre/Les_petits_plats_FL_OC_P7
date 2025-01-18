@@ -53,3 +53,25 @@ export function initializeDropdowns() {
     });
   });
 }
+
+// Fonction pour mettre à jour le dropdown
+export const updateDropdown = (category, filteredItems) => {
+  const dropdownContent = document
+    .querySelector(".dropdown-content")
+    .querySelector("p");
+
+  // Crée un Set pour enlever les doublons
+  const uniqueItems = [...new Set(filteredItems)];
+  dropdownContent.innerHTML = "";
+
+  if (uniqueItems.length > 0) {
+    filteredItems.forEach((item) => {
+      const p = document.createElement("p");
+      p.classList.add("my-2");
+      p.textContent = item;
+      dropdownContent.appendChild(p);
+    });
+  } else {
+    dropdownContent.innerHTML = "<p>Aucun résultat trouvé</p>";
+  }
+};

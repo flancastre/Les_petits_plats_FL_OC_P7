@@ -1,15 +1,16 @@
 // search.js
 import { displayRecipes } from "./recipes.js";
 import { populateDropdowns } from "./dropdownPopulate.js";
+import { updateDropdown } from "./dropdowns.js";
 
 export let currentDisplayedRecipes = [];
 
-// Fonction de recherche
+// Fonction de recherche principale
 export const searchRecipes = (query, recipes) => {
   if (query.length < 3) {
     if (currentDisplayedRecipes === recipes) return;
 
-    displayRecipes(recipes);
+    displayRecipes(recipes, query);
     populateDropdowns(recipes);
     currentDisplayedRecipes = recipes;
     return;
@@ -34,7 +35,25 @@ export const searchRecipes = (query, recipes) => {
     return matchesTitle || matchesIngredients || matchesDescription;
   });
 
-  displayRecipes(filteredRecipes);
+  displayRecipes(filteredRecipes, query);
   populateDropdowns(filteredRecipes);
   currentDisplayedRecipes = filteredRecipes;
+};
+
+// Fonction de recherche dans les Ingrédients
+export const searchIngredients = (query, recipes) => {
+  const lowerCaseQuery = query.toLowerCase();
+
+  // Extraire tous les ingrédients uniques de toutes les recettes
+  const allIngredients = recipes.flatMap((recipe) =>
+    recipe.ingredients.map((ingredientObj) => ingredientObj.ingredient)
+  );
+
+  // Filtrer les ingrédients selon la recherche
+  const filteredIngredients = allIngredients.filter((ingredient) =>
+    ingredient.toLowerCase().includes(lowerCaseQuery)
+  );
+
+  // Mettre à jour le dropdown des ingrédients
+  updateDropdown("ingredients", filteredIngredients);
 };
